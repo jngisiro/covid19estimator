@@ -97,7 +97,7 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
       casesForICUByRequestedTime: casesForICUByRequestedTimeSevere,
       casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
-      dollarsInFlight: `dollarsInFlightSevere${dollarsInFlightSevere}`
+      dollarsInFlight: 667 + dollarsInFlightSevere
     }
   };
 
