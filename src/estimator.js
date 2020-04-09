@@ -49,11 +49,11 @@ const covid19ImpactEstimator = (data) => {
   const severeCasesByRequestedTimeSevere = 0.15 * infectionsByRequestedTimeSevere;
 
   // 😑 Best case number of available hospital beds for severe patients after a given period if time
-  const hospitalBedsByRequestedTimeImpact = Math.floor(0.35 * data.totalHospitalBeds
+  const hospitalBedsByRequestedTimeImpact = Math.trunc(0.35 * data.totalHospitalBeds
     - severeCasesByRequestedTimeImpact);
 
   // 😥 Worst case number of available hospital beds for severe patients after a given period if time
-  const hospitalBedsByRequestedTimeSevere = Math.floor(0.35 * data.totalHospitalBeds
+  const hospitalBedsByRequestedTimeSevere = Math.trunc(0.35 * data.totalHospitalBeds
     - severeCasesByRequestedTimeSevere);
 
   // 😑 Best case number of severe patients that will require ICU after a given period if time
