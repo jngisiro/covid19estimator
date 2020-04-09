@@ -71,12 +71,14 @@ const covid19ImpactEstimator = (data) => {
     * infectionsByRequestedTimeSevere);
 
   // 😑 Best case estimated economic impact
-  const dollarsInFlightImpact = Math.floor(infectionsByRequestedTimeImpact
-    * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
+  const dollarsInFlightImpact = parseFloat(infectionsByRequestedTimeImpact
+    * 0.65 * data.region.avgDailyIncomeInUSD
+    * numberOfDays(data.timeToElapse, data.periodType)).toFixed(2);
 
   // 😥 Best case estimated economic impact
-  const dollarsInFlightSevere = Math.floor(infectionsByRequestedTimeSevere
-    * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
+  const dollarsInFlightSevere = parseFloat(infectionsByRequestedTimeSevere
+    * 0.65 * data.region.avgDailyIncomeInUSD
+    * numberOfDays(data.timeToElapse, data.periodType)).toFixed(2);
 
   // Response Object
   const response = {
@@ -104,4 +106,20 @@ const covid19ImpactEstimator = (data) => {
   return response;
 };
 
-module.exports = covid19ImpactEstimator;
+const data = {
+  region: {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 4,
+    avgDailyIncomePopulation: 0.73
+  },
+  periodType: 'months',
+  timeToElapse: 38,
+  reportedCases: 2747,
+  population: 92931687,
+  totalHospitalBeds: 678874
+};
+
+console.log(covid19ImpactEstimator(data));
+
+// module.exports = covid19ImpactEstimator;
