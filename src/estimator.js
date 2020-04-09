@@ -72,7 +72,7 @@ const covid19ImpactEstimator = (data) => {
 
   // 😑 Best case estimated economic impact
   const dollarsInFlightImpact = Math.floor(infectionsByRequestedTimeImpact
-    * 0.65 * 10000 
+    * 0.65 * 10000
     * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
 
   // 😥 Best case estimated economic impact
