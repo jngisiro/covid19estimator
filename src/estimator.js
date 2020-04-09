@@ -62,7 +62,7 @@ const covid19ImpactEstimator = (data) => {
   // 😥 Worst case number of severe patients that will require ICU after a given period if time
   const casesForICUByRequestedTimeSevere = Math.trunc(0.05 * infectionsByRequestedTimeSevere);
 
-  // 😑 Best case estimated number of severe patients who will require ventilators
+  // 😑 Best case estimated number of severe patients who will require ventilators ✔
   const casesForVentilatorsByRequestedTimeImpact = Math.trunc(0.02
     * infectionsByRequestedTimeImpact);
 
@@ -72,7 +72,8 @@ const covid19ImpactEstimator = (data) => {
 
   // 😑 Best case estimated economic impact
   const dollarsInFlightImpact = Math.floor(infectionsByRequestedTimeImpact
-    * 10000 * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
+    * 0.65 * 10000 
+    * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
 
   // 😥 Best case estimated economic impact
   const dollarsInFlightSevere = Math.floor(infectionsByRequestedTimeSevere
