@@ -64,7 +64,7 @@ const covid19ImpactEstimator = (data) => {
 
   // 😑 Best case estimated number of severe patients who will require ventilators
   const casesForVentilatorsByRequestedTimeImpact = Math.trunc(0.02
-    * infectionsByRequestedTimeImpact);
+    * 10000 * infectionsByRequestedTimeImpact);
 
   // 😥 Worst case estimated number of severe patients who will require ventilators
   const casesForVentilatorsByRequestedTimeSevere = Math.trunc(0.02
