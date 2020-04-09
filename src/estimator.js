@@ -1,4 +1,3 @@
-/* eslint linebreak-style: ["error", "windows"] */
 const covid19ImpactEstimator = (data) => {
   const { reportedCases } = data;
 
