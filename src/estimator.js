@@ -43,17 +43,17 @@ const covid19ImpactEstimator = (data) => {
   );
 
   // 😑 Best case number of severe positive cases over a given time lapse
-  const severeCasesByRequestedTimeImpact = Math.trunc(0.15 * infectionsByRequestedTimeImpact);
+  const severeCasesByRequestedTimeImpact = 0.15 * infectionsByRequestedTimeImpact;
 
   // 😥 Worst case number of severe positive cases over a given time lapse
-  const severeCasesByRequestedTimeSevere = Math.trunc(0.15 * infectionsByRequestedTimeSevere);
+  const severeCasesByRequestedTimeSevere = 0.15 * infectionsByRequestedTimeSevere;
 
   // 😑 Best case number of available hospital beds for severe patients after a given period if time
-  const hospitalBedsByRequestedTimeImpact = Math.trunc(0.35 * data.totalHospitalBeds
+  const hospitalBedsByRequestedTimeImpact = Math.floor(0.35 * data.totalHospitalBeds
     - severeCasesByRequestedTimeImpact);
 
   // 😥 Worst case number of available hospital beds for severe patients after a given period if time
-  const hospitalBedsByRequestedTimeSevere = Math.trunc(0.35 * data.totalHospitalBeds
+  const hospitalBedsByRequestedTimeSevere = Math.floor(0.35 * data.totalHospitalBeds
     - severeCasesByRequestedTimeSevere);
 
   // 😑 Best case number of severe patients that will require ICU after a given period if time
@@ -71,11 +71,11 @@ const covid19ImpactEstimator = (data) => {
     * infectionsByRequestedTimeSevere);
 
   // 😑 Best case estimated economic impact
-  const dollarsInFlightImpact = Math.trunc(infectionsByRequestedTimeImpact
+  const dollarsInFlightImpact = Math.floor(infectionsByRequestedTimeImpact
     * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
 
   // 😥 Best case estimated economic impact
-  const dollarsInFlightSevere = Math.trunc(infectionsByRequestedTimeSevere
+  const dollarsInFlightSevere = Math.floor(infectionsByRequestedTimeSevere
     * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
 
   // Response Object
@@ -97,11 +97,27 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
       casesForICUByRequestedTime: casesForICUByRequestedTimeSevere,
       casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
-      dollarsInFlight: 667 + dollarsInFlightSevere
+      dollarsInFlight: dollarsInFlightSevere
     }
   };
 
   return response;
 };
 
-module.exports = covid19ImpactEstimator;
+const data = {
+  region: {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  },
+  periodType: 'days',
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+};
+
+console.log(covid19ImpactEstimator(data));
+
+// module.exports = covid19ImpactEstimator;
