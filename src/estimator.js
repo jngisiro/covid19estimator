@@ -43,41 +43,41 @@ const covid19ImpactEstimator = (data) => {
   );
 
   // 😑 Best case number of severe positive cases over a given time lapse
-  const severeCasesByRequestedTimeImpact = Math.floor(0.15 * infectionsByRequestedTimeImpact);
+  const severeCasesByRequestedTimeImpact = Math.trunc(0.15 * infectionsByRequestedTimeImpact);
 
   // 😥 Worst case number of severe positive cases over a given time lapse
-  const severeCasesByRequestedTimeSevere = Math.floor(0.15 * infectionsByRequestedTimeSevere);
+  const severeCasesByRequestedTimeSevere = Math.trunc(0.15 * infectionsByRequestedTimeSevere);
 
   // 😑 Best case number of available hospital beds for severe patients after a given period if time
-  const hospitalBedsByRequestedTimeImpact = Math.floor(0.35 * data.totalHospitalBeds
+  const hospitalBedsByRequestedTimeImpact = Math.trunc(0.35 * data.totalHospitalBeds
     - severeCasesByRequestedTimeImpact);
 
   // 😥 Worst case number of available hospital beds for severe patients after a given period if time
-  const hospitalBedsByRequestedTimeSevere = Math.floor(0.35 * data.totalHospitalBeds
+  const hospitalBedsByRequestedTimeSevere = Math.trunc(0.35 * data.totalHospitalBeds
     - severeCasesByRequestedTimeSevere);
 
   // 😑 Best case number of severe patients that will require ICU after a given period if time
-  const casesForICUByRequestedTimeImpact = Math.floor(0.05 * infectionsByRequestedTimeImpact);
+  const casesForICUByRequestedTimeImpact = Math.trunc(0.05 * infectionsByRequestedTimeImpact);
 
   // 😥 Worst case number of severe patients that will require ICU after a given period if time
-  const casesForICUByRequestedTimeSevere = Math.floor(0.05 * infectionsByRequestedTimeSevere);
+  const casesForICUByRequestedTimeSevere = Math.trunc(0.05 * infectionsByRequestedTimeSevere);
 
   // 😑 Best case estimated number of severe patients who will require ventilators
-  const casesForVentilatorsByRequestedTimeImpact = Math.floor(
+  const casesForVentilatorsByRequestedTimeImpact = Math.trunc(
     0.02 * infectionsByRequestedTimeImpact
   );
 
   // 😥 Worst case estimated number of severe patients who will require ventilators
-  const casesForVentilatorsByRequestedTimeSevere = Math.floor(
+  const casesForVentilatorsByRequestedTimeSevere = Math.trunc(
     0.02 * infectionsByRequestedTimeSevere
   );
 
   // 😑 Best case estimated economic impact
-  const dollarsInFlightImpact = Math.floor(infectionsByRequestedTimeImpact
+  const dollarsInFlightImpact = Math.trunc(infectionsByRequestedTimeImpact
     * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
 
   // 😥 Best case estimated economic impact
-  const dollarsInFlightSevere = Math.floor(infectionsByRequestedTimeSevere
+  const dollarsInFlightSevere = Math.trunc(infectionsByRequestedTimeSevere
     * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
 
   // Response Object
