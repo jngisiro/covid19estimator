@@ -1,3 +1,4 @@
+/* eslint linebreak-style: ["error", "windows"] */
 const covid19ImpactEstimator = (data) => {
   const { reportedCases } = data;
 
@@ -50,13 +51,11 @@ const covid19ImpactEstimator = (data) => {
 
   // 😑 Best case number of available hospital beds for severe patients after a given period if time
   const hospitalBedsByRequestedTimeImpact = Math.floor(0.35 * data.totalHospitalBeds
-    - severeCasesByRequestedTimeImpact
-  )
+    - severeCasesByRequestedTimeImpact);
 
   // 😥 Worst case number of available hospital beds for severe patients after a given period if time
   const hospitalBedsByRequestedTimeSevere = Math.floor(0.35 * data.totalHospitalBeds
-    - severeCasesByRequestedTimeSevere
-  );
+    - severeCasesByRequestedTimeSevere);
 
   // 😑 Best case number of severe patients that will require ICU after a given period if time
   const casesForICUByRequestedTimeImpact = Math.floor(0.05 * infectionsByRequestedTimeImpact);
@@ -65,19 +64,22 @@ const covid19ImpactEstimator = (data) => {
   const casesForICUByRequestedTimeSevere = Math.floor(0.05 * infectionsByRequestedTimeSevere);
 
   // 😑 Best case estimated number of severe patients who will require ventilators
-  const casesForVentilatorsByRequestedTimeImpact = Math.floor(0.02 * infectionsByRequestedTimeImpact);
+  const casesForVentilatorsByRequestedTimeImpact = Math.floor(
+    0.02 * infectionsByRequestedTimeImpact
+  );
+
   // 😥 Worst case estimated number of severe patients who will require ventilators
-  const casesForVentilatorsByRequestedTimeSevere = Math.floor(0.02 * infectionsByRequestedTimeSevere);
+  const casesForVentilatorsByRequestedTimeSevere = Math.floor(
+    0.02 * infectionsByRequestedTimeSevere
+  );
 
   // 😑 Best case estimated economic impact
   const dollarsInFlightImpact = Math.floor(infectionsByRequestedTimeImpact
-    * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType)
-  );
+    * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
 
   // 😥 Best case estimated economic impact
   const dollarsInFlightSevere = Math.floor(infectionsByRequestedTimeSevere
-    * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType)
-  );
+    * 0.65 * data.region.avgDailyIncomeInUSD * numberOfDays(data.timeToElapse, data.periodType));
 
   // Response Object
   const response = {
