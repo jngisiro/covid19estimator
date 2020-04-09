@@ -63,10 +63,12 @@ const covid19ImpactEstimator = (data) => {
   const casesForICUByRequestedTimeSevere = Math.trunc(0.05 * infectionsByRequestedTimeSevere);
 
   // 😑 Best case estimated number of severe patients who will require ventilators
-  const casesForVentilatorsByRequestedTimeImpact = 0.02 * infectionsByRequestedTimeImpact;
+  const casesForVentilatorsByRequestedTimeImpact = Math.trunc(0.02
+    * infectionsByRequestedTimeImpact);
 
   // 😥 Worst case estimated number of severe patients who will require ventilators
-  const casesForVentilatorsByRequestedTimeSevere = 0.02 * infectionsByRequestedTimeSevere;
+  const casesForVentilatorsByRequestedTimeSevere = Math.trunc(0.02
+    * infectionsByRequestedTimeSevere);
 
   // 😑 Best case estimated economic impact
   const dollarsInFlightImpact = Math.trunc(infectionsByRequestedTimeImpact
@@ -86,7 +88,7 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: severeCasesByRequestedTimeImpact,
       casesForICUByRequestedTime: casesForICUByRequestedTimeImpact,
       casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeImpact,
-      dollarsInFlight: dollarsInFlightImpact
+      dollarsInFlight: "dollarsInFlightImpact"
     },
     severeImpact: {
       currentlyInfected: assessSevereImpact,
@@ -95,7 +97,7 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
       casesForICUByRequestedTime: casesForICUByRequestedTimeSevere,
       casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
-      dollarsInFlight: dollarsInFlightSevere
+      dollarsInFlight: "dollarsInFlightSevere"
     }
   };
 
