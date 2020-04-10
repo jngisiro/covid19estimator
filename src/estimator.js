@@ -71,14 +71,14 @@ const covid19ImpactEstimator = (data) => {
     * infectionsByRequestedTimeSevere);
 
   // 😑 Best case estimated economic impact
-  const dollarsInFlightImpact = Number(parseFloat((infectionsByRequestedTimeImpact
+  const dollarsInFlightImpact = Math.trunc((infectionsByRequestedTimeImpact
     * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD)
-    / numberOfDays(data.timeToElapse, data.periodType)).toFixed(2));
+    / numberOfDays(data.timeToElapse, data.periodType));
 
   // 😥 Best case estimated economic impact
-  const dollarsInFlightSevere = Number(parseFloat((infectionsByRequestedTimeSevere
+  const dollarsInFlightSevere = Math.trunc((infectionsByRequestedTimeSevere
     * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD)
-    / numberOfDays(data.timeToElapse, data.periodType)).toFixed(2));
+    / numberOfDays(data.timeToElapse, data.periodType));
 
   // Response Object
   const response = {
