@@ -8,38 +8,44 @@
   --color-grey-light-4: #ccc;
   --color-grey-dark-1: #333;
   --color-grey-dark-2: #777;
-  --color-grey-dark-3: #999; }
+  --color-grey-dark-3: #999;
+}
 
 * {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; }
+  font-size: 62.5%;
+}
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
- Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   color: var(--color-grey-dark-2);
   line-height: 1.6;
   background-image: url(../img/Coronavirus-background.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh; }
+  min-height: 100vh;
+}
 
 .container {
   max-width: 120rem;
   margin: 8rem auto;
-  background-color: rgba(255,0,0,.2);
+  background-color: rgba(255, 0, 0, 0.2);
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
-  min-height: 50rem; }
+  min-height: 50rem;
+}
 
 .header {
   background-color: #fff;
@@ -48,34 +54,41 @@ body {
 }
 
 .content {
-  color:var(--color-grey-light-1);
+  color: var(--color-grey-light-1);
   font-size: 1.5rem;
-  padding: 2rem 0 ;
+  padding: 2rem 0;
 }
 
-.form span{
+.form span {
   display: none;
 }
 
 .form {
-  display: flex;
+  display: none;
   flex-flow: column;
   align-items: center;
   min-height: 70vh;
   justify-content: space-around;
 }
 
-.form input, .form select {
+.form input,
+.form select {
   height: 3rem;
-  width:50vw;
+  width: 50vw;
 }
 
-
-.form label input, .form label select{
+.form label input,
+.form label select {
   display: block;
 }
 
-.form input[type="submit"] {
-  margin-top:2rem;
-  
+.form input[type='submit'] {
+  margin-top: 2rem;
+}
+
+.results {
+}
+
+.results h2 {
+  text-align: center;
 }
