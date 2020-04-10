@@ -1,108 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Covid 19 Estimator</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Covid 19 Estimator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-<body>
-  <div class="container">
-    <header class="header">
-      <h1>Covid 19 Estimator</h1>
-    </header>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Covid 19 Estimator</h1>
+      </header>
 
-    <main class="content">
-      <form class="form">
-        <!-- Population Label -->
-        <label for="population">
-          Population
-          <span class="required">
-            (required)
-          </span>
-    
-          <span class="error-message">
+      <main class="content">
+        <form class="form">
+          <!-- Population Label -->
+          <label for="population">
+            Population
+            <span class="required">
+              (required)
+            </span>
+
+            <span class="error-message">
               You must input Population
-          </span>
-    
-          <input id="pupulation" name="pupulation" data-population required="" type="text">
-    
-        </label>
-        <!-- End of Population -->
+            </span>
 
-        <!-- Time to elapse Label -->
-        <label for="timeToElapse">
-          Time to elapse
-          <span class="required">
-            (required)
-          </span>
-    
-          <span class="error-message">
+            <input
+              id="population"
+              name="population"
+              data-population
+              required=""
+              type="text"
+            />
+          </label>
+          <!-- End of Population -->
+
+          <!-- Time to elapse Label -->
+          <label for="timeToElapse">
+            Time to elapse
+            <span class="required">
+              (required)
+            </span>
+
+            <span class="error-message">
               You must input Time to ellapse
-          </span>
-    
-          <input id="timeToElapse" data-time-to-elapse name="timeToElapse" required="" type="text">
-    
-        </label>
-        <!-- End of Time to elapse -->
+            </span>
 
-        <!-- Reported Cases Label -->
-        <label for="reportedCases">
-          Reported Cases
-          <span class="required">
-            (required)
-          </span>
-    
-          <span class="error-message">
+            <input
+              id="timeToElapse"
+              data-time-to-elapse
+              name="timeToElapse"
+              required=""
+              type="text"
+            />
+          </label>
+          <!-- End of Time to elapse -->
+
+          <!-- Reported Cases Label -->
+          <label for="reportedCases">
+            Reported Cases
+            <span class="required">
+              (required)
+            </span>
+
+            <span class="error-message">
               You must input Time to ellapse
-          </span>
-    
-          <input id="reportedCases" data-reported-cases name="reportedCases" required="" type="text">
-    
-        </label>
-        <!-- End of Reported Cases -->
+            </span>
 
-        <!-- Total Hospital Beds Label -->
-        <label for="totalHospitalBeds">
-          Total Hospital Beds
-          <span class="required">
-            (required)
-          </span>
-    
-          <span class="error-message">
+            <input
+              id="reportedCases"
+              data-reported-cases
+              name="reportedCases"
+              required=""
+              type="text"
+            />
+          </label>
+          <!-- End of Reported Cases -->
+
+          <!-- Total Hospital Beds Label -->
+          <label for="totalHospitalBeds">
+            Total Hospital Beds
+            <span class="required">
+              (required)
+            </span>
+
+            <span class="error-message">
               You must input Time to ellapse
-          </span>
-    
-          <input id="totalHospitalBeds" data-total-hospital-beds name="totalHospitalBeds" required="" type="text">
-    
-        </label>
-        <!-- End of Total Hospital Beds -->
+            </span>
 
-        <!-- Label for Period Type -->
-        <label for="periodType">Choose from the following:
-          <span class="required">
-            (required)
-          </span>
-    
-          <span class="error-message">
-            Please choose one of the following time periods.
-          </span>
-          <select name="periodType" id="periodType" data-period-type required=''>
-            <option value=''> Select </option>
-            <option value="days">Days</option>
-            <option value="weeks">Weeks</option>
-            <option value="months">Months</option>
-          </select>
-        </label>
-        <!-- End of Period Type -->
+            <input
+              id="totalHospitalBeds"
+              data-total-hospital-beds
+              name="totalHospitalBeds"
+              required=""
+              type="text"
+            />
+          </label>
+          <!-- End of Total Hospital Beds -->
 
-        <input type="submit" value="Submit" data-go-estimate />
-      </form>
-    </main>
-  </div>
-  <script src="js/script.js"></script>
-</body>
+          <!-- Label for Period Type -->
+          <label for="periodType"
+            >Choose from the following:
+            <span class="required">
+              (required)
+            </span>
+
+            <span class="error-message">
+              Please choose one of the following time periods.
+            </span>
+            <select
+              name="periodType"
+              id="periodType"
+              data-period-type
+              required=""
+            >
+              <option value=""> Select </option>
+              <option value="days">Days</option>
+              <option value="weeks">Weeks</option>
+              <option value="months">Months</option>
+            </select>
+          </label>
+          <!-- End of Period Type -->
+
+          <input type="submit" value="Submit" data-go-estimate />
+        </form>
+      </main>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
 </html>

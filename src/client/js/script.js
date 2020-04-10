@@ -16,19 +16,29 @@ const fetchEstimates = (data) => {
 };
 
 document.querySelector('form').addEventListener('submit', (e) => {
-  const data = {
-    region: {
-      name: 'Africa',
-      avgAge: 19.7,
-      avgDailyIncomeInUSD: 5,
-      avgDailyIncomePopulation: 0.71
-    },
-    periodType: 'days',
-    timeToElapse: 28,
-    reportedCases: 674,
-    population: 66622705,
-    totalHospitalBeds: 1380614
-  };
   e.preventDefault();
+  const population = document.querySelector('#population').value;
+  const timeToElapse = document.querySelector('#timeToElapse').value;
+  const reportedCases = document.querySelector('#reportedCases').value;
+  const totalHospitalBeds = document.querySelector('#totalHospitalBeds').value;
+  const period = document.querySelector('#periodType');
+  const periodType = period.options[period.selectedIndex].value;
+
+  const region = {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  };
+
+  const data = {
+    region,
+    population,
+    timeToElapse,
+    reportedCases,
+    totalHospitalBeds,
+    periodType
+  };
+
   fetchEstimates(data);
 });
