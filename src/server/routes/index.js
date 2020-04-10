@@ -16,6 +16,6 @@ router.post('/on-covid-19/json', jsonController);
 
 router.post('/on-covid-19/xml', xmlController);
 
-router.get('/on-covid19/logs', logsController);
+router.get('/on-covid-19/logs', logsController);
 
 module.exports = router;

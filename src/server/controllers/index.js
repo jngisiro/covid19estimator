@@ -1,4 +1,7 @@
 const xml = require('object-to-xml');
+const fs = require('fs');
+const path = require('path');
+
 
 const estimator = require('../../estimator');
 
@@ -36,4 +39,10 @@ exports.xmlController = (req, res) => {
     );
 };
 
-exports.logsController = (req, res) => res.send(req);
+exports.logsController = (req, res) => {
+  fs.readFile(path.join(__dirname, '../access.log'), 'utf8', (err, data) => {
+    if (err) return res.status(404).json({ status: 'fail', error: 'Log files not found' });
+
+    return res.type('text/plain').status(200).send(data);
+  });
+};
