@@ -14,44 +14,53 @@ const fetchEstimates = (data) => {
     'https://whispering-waters-00388.herokuapp.com/api/v1/on-covid-19',
     options
   )
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return alert('Fail');
+    })
     .then((res) => {
       form.style.display = 'none';
       results.style.display = 'grid';
 
-      Object.keys(res).forEach((key) => {
-        if (key === 'impact' || key === 'severeImpact') {
-          document.querySelector(
-            `.results__${key} .infected .figure`
-          ).innerText = res[key].currentlyInfected.toLocaleString();
+      Object.keys(res)
+        .forEach((key) => {
+          if (key === 'impact' || key === 'severeImpact') {
+            document.querySelector(
+              `.results__${key} .infected .figure`
+            ).innerText = res[key].currentlyInfected.toLocaleString();
 
-          document.querySelector(
-            `.results__${key} .infections .figure`
-          ).innerText = res[key].infectionsByRequestedTime.toLocaleString();
+            document.querySelector(
+              `.results__${key} .infections .figure`
+            ).innerText = res[key].infectionsByRequestedTime.toLocaleString();
 
-          document.querySelector(
-            `.results__${key} .severeCases .figure`
-          ).innerText = res[key].severeCasesByRequestedTime.toLocaleString();
+            document.querySelector(
+              `.results__${key} .severeCases .figure`
+            ).innerText = res[key].severeCasesByRequestedTime.toLocaleString();
 
-          document.querySelector(
-            `.results__${key} .hospitalBeds .figure`
-          ).innerText = res[key].hospitalBedsByRequestedTime.toLocaleString();
+            document.querySelector(
+              `.results__${key} .hospitalBeds .figure`
+            ).innerText = res[key].hospitalBedsByRequestedTime.toLocaleString();
 
-          document.querySelector(
-            `.results__${key} .casesForICI .figure`
-          ).innerText = res[key].casesForICUByRequestedTime.toLocaleString();
+            document.querySelector(
+              `.results__${key} .casesForICI .figure`
+            ).innerText = res[key].casesForICUByRequestedTime.toLocaleString();
 
-          document.querySelector(
-            `.results__${key} .casesForventilators .figure`
-          ).innerText = res[
-            key
-          ].casesForVentilatorsByRequestedTime.toLocaleString();
+            document.querySelector(
+              `.results__${key} .casesForventilators .figure`
+            ).innerText = res[
+              key
+            ].casesForVentilatorsByRequestedTime.toLocaleString();
 
-          document.querySelector(
-            `.results__${key} .dollarsInFlight .figure`
-          ).innerText = res[key].dollarsInFlight.toLocaleString();
-        }
-      });
+            document.querySelector(
+              `.results__${key} .dollarsInFlight .figure`
+            ).innerText = res[key].dollarsInFlight.toLocaleString();
+          }
+        })
+        .catch((error) => {
+          alert(error);
+        });
     });
 };
 
