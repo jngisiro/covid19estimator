@@ -17,6 +17,6 @@ app.use(express.json());
 
 app.use('/api/v1', routes);
 
-app.get('/', (req, res) => res.send('Index'));
+app.get('*', (req, res) => res.send('Route Undefined'));
 
 module.exports = app;
