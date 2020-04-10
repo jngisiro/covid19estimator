@@ -33,7 +33,7 @@ body {
   font-weight: 400;
   color: var(--color-grey-dark-2);
   line-height: 1.6;
-  background-image: url(../img/Coronavirus-background.jpg);
+  background-image: url('../img/covid.webp');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
