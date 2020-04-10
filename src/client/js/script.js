@@ -1,3 +1,6 @@
+const form = document.querySelector('.form');
+const results = document.querySelector('.results');
+
 const fetchEstimates = (data) => {
   const options = {
     method: 'POST',
@@ -12,10 +15,47 @@ const fetchEstimates = (data) => {
     options
   )
     .then((res) => res.json())
-    .then((res) => console.log(res));
+    .then((res) => {
+      form.style.display = 'none';
+      results.style.display = 'grid';
+
+      Object.keys(res).forEach((key) => {
+        if (key === 'impact' || key === 'severeImpact') {
+          document.querySelector(
+            `.results__${key} .infected .figure`
+          ).innerText = res[key].currentlyInfected.toLocaleString();
+
+          document.querySelector(
+            `.results__${key} .infections .figure`
+          ).innerText = res[key].infectionsByRequestedTime.toLocaleString();
+
+          document.querySelector(
+            `.results__${key} .severeCases .figure`
+          ).innerText = res[key].severeCasesByRequestedTime.toLocaleString();
+
+          document.querySelector(
+            `.results__${key} .hospitalBeds .figure`
+          ).innerText = res[key].hospitalBedsByRequestedTime.toLocaleString();
+
+          document.querySelector(
+            `.results__${key} .casesForICI .figure`
+          ).innerText = res[key].casesForICUByRequestedTime.toLocaleString();
+
+          document.querySelector(
+            `.results__${key} .casesForventilators .figure`
+          ).innerText = res[
+            key
+          ].casesForVentilatorsByRequestedTime.toLocaleString();
+
+          document.querySelector(
+            `.results__${key} .dollarsInFlight .figure`
+          ).innerText = res[key].dollarsInFlight.toLocaleString();
+        }
+      });
+    });
 };
 
-document.querySelector('form').addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   const population = document.querySelector('#population').value;
   const timeToElapse = document.querySelector('#timeToElapse').value;
