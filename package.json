@@ -29,5 +29,8 @@
   },
   "browserslist": [
     "last 1 Chrome versions"
-  ]
+  ],
+  "engines": {
+    "node": ">=10.0.0"
+  }
 }
