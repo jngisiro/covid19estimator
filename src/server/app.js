@@ -15,7 +15,11 @@ const accessLogStream = fs.createWriteStream(
 );
 
 // setup the logger
-app.use(morgan('combined', { stream: accessLogStream }));
+app.use(
+  morgan(':status :url :status :response-time ms', {
+    stream: accessLogStream
+  })
+);
 
 app.use(express.json());
 
