@@ -47,6 +47,6 @@ exports.logsController = (req, res) => {
         .json({ status: 'fail', error: 'Log files not found' });
     }
 
-    return res.status(200).send(data);
+    return res.type('text/plain').status(200).send(data);
   });
 };
