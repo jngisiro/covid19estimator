@@ -42,6 +42,7 @@ exports.logsController = (req, res) => {
   fs.readFile(path.join(__dirname, '../access.log'), 'utf8', (err, data) => {
     if (err) {
       return res
+        .type('text/plain')
         .status(404)
         .json({ status: 'fail', error: 'Log files not found' });
     }
