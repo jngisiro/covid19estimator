@@ -16,7 +16,7 @@ const accessLogStream = fs.createWriteStream(
 
 // setup the logger
 app.use(
-  morgan(':status :url :status :response-time ms', {
+  morgan(':method :url :status :response-time ms', {
     stream: accessLogStream
   })
 );
