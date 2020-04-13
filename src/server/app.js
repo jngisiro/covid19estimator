@@ -17,7 +17,15 @@ const accessLogStream = fs.createWriteStream(
 // setup the logger
 app.use(
   morgan(':method :url :status :response-time ms', {
-    stream: accessLogStream
+    stream: {
+      write: (str) => {
+        const methodToStatus = str.split(' ').slice(0, 3).join(' ');
+        let time = Math.trunc(Number(str.split(' ')[3]));
+        if (time < 10) time = `0${time.toString()}`;
+        const logStr = `${methodToStatus} ${time}${str.split(' ')[4]}`;
+        accessLogStream.write(logStr);
+      }
+    }
   })
 );
 

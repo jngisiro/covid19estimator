@@ -10,7 +10,7 @@ const router = Router();
 
 router.get('/', (req, res) => res.send('Home Route'));
 
-router.post('/on-covid-19', jsonController);
+router.post('/on-covid-19/', jsonController);
 
 router.post('/on-covid-19/json', jsonController);
 
